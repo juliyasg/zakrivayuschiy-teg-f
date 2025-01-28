@@ -13,4 +13,310 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color);
+  font-family: var(--main-font-family);
+  font-variation-settings: 'wght' var(--text-weight-normal);
+  margin-inline: auto;
+}
+
+.header {
+  max-inline-size: var(--inline-size);
+  text-align: center;
+  font-family: var(--accent-font-family);
+  margin-block: 100px;
+  padding-block: clamp(120px, 10vw, 128px);
+  border: var(--main-border);
+  margin-inline: auto;
+  background-color: var(--bg-color);
+}
+
+.header__title {
+  font-size: var(--title-text-size);
+  font-weight: var(--text-weight-normal);
+}
+
+.header__paragraph {
+  font-size: var(--paragraph-text-size);
+  font-weight: var(--text-weight-normal);
+  text-transform: uppercase;
+  margin-block-start: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.section {
+  max-inline-size: var(--inline-size);
+  inline-size: 100%;
+  border: var(--main-border);
+  background-color: var(--bg-color);
+}
+
+.section__title {
+  font-variation-settings: 'wght' var(--text-weight-bold);
+  font-size: var(--main-text-size);
+  padding: 5px 10px 6px 10px;
+}
+
+.section__image {
+  position: relative;
+  display: inline-block;
+}
+
+.image {
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.filter-contrast-saturate {
+  filter: contrast(180%) saturate(135%);
+}
+
+.filter-blur-hue-rotate {
+  filter: blur(0.3rem) hue-rotate(-15deg);
+}
+
+.filter-invert-brightness-contrast {
+  filter: invert(95%) brightness(60%) contrast(110%);
+}
+
+.filter-opacity-grayscale {
+  filter: opacity(25%) grayscale(65%);
+}
+
+.filter-hue-rotate-contrast-brightness-saturate {
+  filter: hue-rotate(15deg) contrast(140%) brightness(80%) saturate(100%);
+}
+
+.filter-grayscale-blur {
+  filter: grayscale(105%) blur(0.1rem);
+}
+
+.filter-sepia-brightness {
+  filter: sepia(45%) brightness(45%);
+}
+
+.label {
+  position: absolute;
+  mix-blend-mode: hard-light;
+  font-family: var(--accent-font-family);
+  font-size: var(--button-text-size);
+  opacity: 0.5;
+  top: 25px;
+  right: clamp(13px, calc(13px + (25 - 13) * ((100vw - 375px) / (1440 - 375))), 25px);
+  text-shadow: -1px 0 var(--color-stroke), 0 1px var(--color-stroke), 1px 0 var(--color-stroke), 0 -1px var(--color-stroke);
+}
+
+@supports ((text-stroke: 1px var(--color-stroke)) or (-webkit-text-stroke: var(--color-stroke))) {
+  .label {
+    -webkit-text-stroke: 1px var(--color-stroke);
+    text-stroke: 1px var(--color-stroke);
+    text-shadow: none;
+  }
+} 
+
+.section__paragraph {
+  font-size: var(--main-text-size);
+  padding: 25px;
+  display: flex;
+  gap: 27px;
+  flex-direction: column;
+  line-height: 21px;
+}
+
+.button__box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-inline-end: 27px;
+  margin-block-end: 25px;
+  gap: 6px;
+}
+
+.card__icon-button {
+  background-color: inherit;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+  block-size: 37px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .core {
+  fill: var(--color-contour-heart);
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--color-contour-heart);
+}
+
+.like-icon:active .core {
+  fill: var(--color-sparks-heart);
+}
+
+.like-icon.is-liked .core {
+  fill: var(--color-sparks-heart);
+}
+
+.like-icon:active .main-body {
+  fill: var(--color-sparks-heart);
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--color-sparks-heart);
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--color-sparks-heart);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: var(--main-border);
+}
+
+.button {
+  cursor: pointer;
+  background-color: var(--bg-color);
+  border: none;
+  outline: var(--main-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.card__like-button {
+  block-size: 34px;
+  inline-size: 127px;
+}
+
+.button__text {
+  font-size: var(--button-text-size);
+  font-family: var(--accent-font-family);
+  color: #fff;
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 4;
+  transition: color 0.5s ease-in-out;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0px var(--text-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.save-button {
+  block-size: 55px;
+  inline-size: 335px;
+  margin-block-end: clamp(100px, calc(0.2667vw + 0.154vh), 103px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-floppy {
+  fill: #fff;
+  mix-blend-mode: difference;
+  z-index: 4;
+  transition: fill 0.5s ease-in-out;
+}
+
+.dialog {
+  max-inline-size: 353px;
+  padding: 30px;
+  border: none;
+  outline: var(--main-border);
+}
+
+.dialog[open] {
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  gap: 30px 20px;
+}
+
+.dialog::backdrop {
+  background-color: rgba(0 0 0 / 0.75);
+}
+
+.dialog__text {
+  font-family: var(--accent-font-family);
+  font-size: var(--button-text-size);
+  text-transform: uppercase;
+  line-height: 21px;
+}
+
+.dialog__form {
+  grid-column: span 2;
+}
+
+.button-close {
+  block-size: 38px;
+  inline-size: 100%;
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {  /* не срабатывает @media (width <= 375px), поэтому стоит max-width */
+  
+  .save-button {
+    block-size: 84px;
+    inline-size: 306px;
+    flex-direction: column;
+    gap: 15px;
+}
+  .icon-floppy {
+  width: 28px;
+  height: 28px;
+}
+  .dialog {
+    max-inline-size: 341px;
+    padding: 30px 42px 30px 42px;
+  }
 }
