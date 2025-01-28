@@ -18,7 +18,7 @@
   background-size: cover;
   background-attachment: fixed;
   color: var(--text-color);
-  font-family: var(--main-font-family);
+  font-family: var(--main-font-family), sans-serif;
   font-variation-settings: 'wght' var(--text-weight-normal);
   margin-inline: auto;
 }
@@ -26,7 +26,7 @@
 .header {
   max-inline-size: var(--inline-size);
   text-align: center;
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family), fantasy;
   margin-block: 100px;
   padding-block: clamp(120px, 10vw, 128px);
   border: var(--main-border);
@@ -53,20 +53,20 @@
   gap: 50px;
 }
 
-.section {
+.article {
   max-inline-size: var(--inline-size);
   inline-size: 100%;
   border: var(--main-border);
   background-color: var(--bg-color);
 }
 
-.section__title {
+.article__title {
   font-variation-settings: 'wght' var(--text-weight-bold);
   font-size: var(--main-text-size);
   padding: 5px 10px 6px 10px;
 }
 
-.section__image {
+.article__image {
   position: relative;
   display: inline-block;
 }
@@ -76,6 +76,7 @@
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
+  object-position: center;
 }
 
 .filter-contrast-saturate {
@@ -109,7 +110,7 @@
 .label {
   position: absolute;
   mix-blend-mode: hard-light;
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family), fantasy;
   font-size: var(--button-text-size);
   opacity: 0.5;
   top: 25px;
@@ -125,7 +126,7 @@
   }
 } 
 
-.section__paragraph {
+.article__paragraph {
   font-size: var(--main-text-size);
   padding: 25px;
   display: flex;
@@ -158,36 +159,46 @@
 
 .core {
   fill: transparent;
-  transition: fill 0.3s linear;
+  transition: fill 0.3s linear 0.03s;
 }
 
 .like-icon:hover .core {
   fill: var(--color-contour-heart);
+  transition: fill 0.3s linear 0s;
 }
 
 .main-body {
   fill: transparent;
-  transition: fill 0.3s linear 0.05s;
+  transition: fill 0.3s linear 0s;
 }
 
 .like-icon:hover .main-body {
   fill: var(--color-contour-heart);
+  transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon:active .core {
   fill: var(--color-sparks-heart);
+  transition: fill 0.3s linear 0s;
 }
 
 .like-icon.is-liked .core {
   fill: var(--color-sparks-heart);
+  transition: fill 0.3s linear 0s;
 }
 
 .like-icon:active .main-body {
   fill: var(--color-sparks-heart);
+  transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--color-sparks-heart);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.contour {
+  transition: fill 0.1s linear 0s;
 }
 
 .like-icon.is-liked .contour {
@@ -206,10 +217,10 @@
 .button {
   cursor: pointer;
   background-color: var(--bg-color);
-  border: none;
-  outline: var(--main-border);
+  border: var(--main-border);
   position: relative;
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
 .card__like-button {
@@ -219,12 +230,11 @@
 
 .button__text {
   font-size: var(--button-text-size);
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family), fantasy;
   color: #fff;
   mix-blend-mode: difference;
   position: relative;
   z-index: 4;
-  transition: color 0.5s ease-in-out;
 }
 
 .button::before {
@@ -245,9 +255,12 @@
   transform: scaleX(1);
 }
 
+.button:focus {
+  outline: none;
+}
+
 .button:focus-visible {
   box-shadow: 2px 2px 0px var(--text-color);
-  transition: box-shadow 0.3s ease;
 }
 
 .save-button {
@@ -264,7 +277,6 @@
   fill: #fff;
   mix-blend-mode: difference;
   z-index: 4;
-  transition: fill 0.5s ease-in-out;
 }
 
 .dialog {
@@ -287,7 +299,7 @@
 }
 
 .dialog__text {
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family), fantasy;
   font-size: var(--button-text-size);
   text-transform: uppercase;
   line-height: 21px;
@@ -312,8 +324,8 @@
     gap: 8px;
 }
   .icon-floppy {
-  width: 28px;
-  height: 28px;
+    width: 28px;
+    height: 28px;
 }
   .dialog {
     max-inline-size: 341px;
