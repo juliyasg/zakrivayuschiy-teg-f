@@ -303,7 +303,7 @@
   text-transform: uppercase;
 }
 
-@media (width <= 375px) {  /* не срабатывает @media (width <= 375px), поэтому стоит max-width */
+@media (width <= 375px) {
   
   .save-button {
     block-size: 84px;
